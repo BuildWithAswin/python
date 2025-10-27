@@ -17,7 +17,7 @@ def generate_password(length=12, use_upper=True, use_lower=True, use_digits=True
         ambiguous = ['I', 'l', '0', 'o']
         pools = [''.join(ch for ch in pool if ch not in ambiguous) for pool in pools]
     if not pools:
-        raise ValueError("At lease one character tyoe must be enabled")
+        raise ValueError("At lease one character type must be enabled")
     
     pass_chars = [_sysrand.choice(pool) for pool in pools]
     full_chars = ''.join(pools) 
