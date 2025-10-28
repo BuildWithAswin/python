@@ -2,25 +2,45 @@ import random
 
 def hangman():
     word_list = ['apple', 'orange', 'banana', 'pear']
-    computer = "apple"
+    computer = random.choice(word_list)
     attempts = 15
-    user_attempt = 0
-    user_input = []
+    guessed_letters = []
 
-    while user_attempt <= attempts:
-        for i in computer:
-            current_guess = str(input("Enter the letter: "))
-            if current_guess != i:
-                print(f"{current_guess} is wrong guess!")
-            else:
-                print("Your guess is right!")
-                user_input.append(i)
-                if len(computer) == len(user_input):
+    print("Welcome to hangman!")
+    print("_ " * len(computer))
 
-                 if sorted(computer) == sorted(user_input):
-                    print(f"You entered{user_input}, you won!")
-                    break
-                 else: print(f"You entered{user_input}, you loose!")
-                 
+    while attempts > 0:
+
+  # Validate input
+        current_input = input("Enter your guess: ").lower()
+        if len(current_input) != 1 or not current_input.isalpha():
+            print("Enter a valid letter")
+            continue
+
+  # If already guessed
+        if current_input in guessed_letters:
+            print("You have already guessed this letter")
+            continue
+
+        guessed_letters.append(current_input)
+  # If guess is correct
+        if current_input in computer:
+            print("correct guess")
+        else:
+            attempts -= 1
+            print ("Your guess is not right")
+
+  # Show current progress
+        display = [letter if letter in guessed_letters else "_" for letter in computer]
+        print(" ".join(display))
+   # Check if player won
+        if "_" not in display:
+            print(f"You guessed it right: {computer}! You win!!")
+            break
+    else:
+        print (f"Out of attempts, You loose 😢. Correct word is {computer}")
+
+
+  
 
 hangman() 
