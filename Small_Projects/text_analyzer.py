@@ -34,7 +34,6 @@ def longest_word():
 check_vowels()
 check_consonents()
 longest_word()
-    #print (f"Noumber of vowels in file {file} is : {vowels_count}")
 
 
 
