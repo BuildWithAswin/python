@@ -21,7 +21,7 @@ class Cat(Animal):
     def sound(self):
         print(f"Every {self.type} does meow meow!. So does {self.name}!")
 
-    
+
   
 dog1 = Dog("Dog", "Tommy")
 dog1.sound()
