@@ -20,7 +20,9 @@ def get_item(item_id):
     for item in items:
         if item["id"] == item_id:
             return jsonify(item)
-    return jsonify({"error": "Item not found"}), 404
+    return jsonify({"error": "Item not found"}), 400
+
+
 # Create
 
 
