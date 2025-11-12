@@ -48,6 +48,7 @@ def create_item():
     data = request.get_json()
     if not data or "name" not in data:
         return jsonify({"Error": "Invalid input"}), 400
+    # Get the value for the key 'done' if it exists; otherwise, use False by default.
     new_item = Item(name=data["name"], done=data.get("done", False))
     db.session.add(new_item)
     db.session.commit()
@@ -63,6 +64,7 @@ def update_item(item_id):
     if not item:
         return jsonify({"Error: item not found"}), 404
 
+    # If the user has provided a new value for name in the JSON request, update it.Otherwise, keep the current value as-is.
     item.name = data.get("name", item.name)
     item.done = data.get("done", item.done)
     db.session.commit()
